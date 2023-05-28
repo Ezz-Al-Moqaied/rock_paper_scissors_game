@@ -32,132 +32,148 @@ class _GameScreenState extends State<GameScreen> {
         backgroundColor: Colors.black.withOpacity(0.8),
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 50,
-          ),
-          Text(
-            "Draw : $drawPoints",
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+      body: Container(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 50,
             ),
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "You",
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              Text(
-                yourPoints.toString(),
-                style: TextStyle(
-                  fontSize: 24,
-                  color: yourPoints > systemPoints ? Colors.green : Colors.red,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              const Text(
-                " : ",
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              Text(
-                systemPoints.toString(),
-                style: TextStyle(
-                  fontSize: 24,
-                  color: systemPoints > yourPoints ? Colors.green : Colors.red,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              const Text(
-                "System",
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: TextButton(
-                  onPressed: operation,
-                  child: Image.asset(images[indexImageYour]),
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: operation,
-                  child: Image.asset(images[indexImageSystem]),
-                ),
-              ),
-            ],
-          ),
-          const Spacer(),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                yourPoints = 0;
-                systemPoints = 0;
-                drawPoints = 0;
-                indexImageYour = 0;
-                indexImageSystem = 0;
-              });
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
-              decoration: const BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-              child: const Text(
-                "reset",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                  color: Colors.white,
-                ),
+            Text(
+              "Draw : $drawPoints",
+              style: const TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-        ],
+            const SizedBox(
+              height: 40,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "You",
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  yourPoints.toString(),
+                  style: TextStyle(
+                    fontSize: 24,
+                    color:
+                        yourPoints > systemPoints ? Colors.green : Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+                const Text(
+                  " : ",
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  systemPoints.toString(),
+                  style: TextStyle(
+                    fontSize: 24,
+                    color:
+                        systemPoints > yourPoints ? Colors.green : Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                const Text(
+                  "System",
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: operation,
+                    child: Image.asset(images[indexImageYour]),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const Text(
+                  "vs",
+                  style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: TextButton(
+                    onPressed: operation,
+                    child: Image.asset(images[indexImageSystem]),
+                  ),
+                ),
+              ],
+            ),
+            const Spacer(),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  yourPoints = 0;
+                  systemPoints = 0;
+                  drawPoints = 0;
+                  indexImageYour = 0;
+                  indexImageSystem = 0;
+                });
+              },
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+                decoration: const BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                child: const Text(
+                  "reset",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+          ],
+        ),
       ),
     );
   }
